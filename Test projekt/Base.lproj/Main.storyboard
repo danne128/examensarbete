@@ -217,7 +217,7 @@
             </objects>
             <point key="canvasLocation" x="-572" y="349"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register-->
         <scene sceneID="FdS-Ks-fUD">
             <objects>
                 <viewController id="uVP-dg-qPn" customClass="RegisterViewController" customModule="Test_projekt" customModuleProvider="target" sceneMemberID="viewController">
@@ -283,6 +283,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Register" id="bJS-ap-ubi"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="emailTextField" destination="E3n-uc-akC" id="ysp-kN-TXm"/>

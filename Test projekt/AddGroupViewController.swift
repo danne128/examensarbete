@@ -18,12 +18,16 @@ class AddGroupViewController: UIViewController {
     
     let rootRef = FIRDatabase.database().reference()
     
-    var olikaOrd: [String!] = []
+    var olikaOrd: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchList()
         moveOn = false
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        fetchList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,23 +37,20 @@ class AddGroupViewController: UIViewController {
     
     func fetchList() {
         
-        func fetchList() {
+        rootRef.child("list").observeSingleEventOfType(.Value, withBlock: { snapshot in
+            //Checking if snapshot works
+            //print(snapshot.childrenCount)
             
-            rootRef.child("list").observeSingleEventOfType(.Value, withBlock: { snapshot in
-                //Checking if snapshot works
-                //print(snapshot.childrenCount)
+            if let objects = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                //print(objects)
+                //print(objects.count)
+                //print(objects[1])
+                //self.decisionLabel.text = "\(objects[2])"
+                //print(objects.map { $0.value! })
                 
-                if let objects = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                    //print(objects)
-                    //print(objects.count)
-                    //print(objects[1])
-                    //self.decisionLabel.text = "\(objects[2])"
-                    //print(objects.map { $0.value! })
-                    
-                    self.savedThingsLabel.text = "You have: \(objects.map { $0.value! }) saved)"
-                }
-            })
-        }
+                self.savedThingsLabel.text = "You have: \(objects.map { ($0.value! as! String) }.prettyPrinted) saved"
+            }
+        })
     }
     
     
@@ -63,9 +64,11 @@ class AddGroupViewController: UIViewController {
         olikaOrd.append(thing)
         addGroupTextField.text = nil
         //print(olikaOrd)
-        savedThingsLabel.text = ("Saved things: \(olikaOrd)")
+        let array = olikaOrd.prettyPrinted
+        savedThingsLabel.text = ("Things: \(array)")
         
     }
+    
 
     @IBAction func startVotingWasPressed(sender: AnyObject) {
         
@@ -103,7 +106,11 @@ class AddGroupViewController: UIViewController {
     
 }
 
-
+extension CollectionType where Generator.Element == String {
+    var prettyPrinted: String {
+        return self.joinWithSeparator(", ")
+    }
+}
 
 
 
