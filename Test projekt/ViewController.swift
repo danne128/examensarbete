@@ -45,7 +45,7 @@ class ViewController: UIViewController {
             else {
                 print("User logged in...")
                 self.moveOn = true
-                self.performSegueWithIdentifier("moveToGroups", sender: nil)
+                self.performSegueWithIdentifier("moveToVote", sender: nil)
                 self.emailTextField.text = ""
                 self.passwordTextField.text = ""
             }
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        print(moveOn)
+        //print(moveOn)
         return moveOn
     }
 

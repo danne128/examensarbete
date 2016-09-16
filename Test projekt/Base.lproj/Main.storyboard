@@ -65,7 +65,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signInWasTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vUP-6d-lUO"/>
-                                    <segue destination="aKO-BC-w9U" kind="show" identifier="moveToGroups" id="5nG-rf-t6a"/>
+                                    <segue destination="s6N-5U-fox" kind="show" identifier="moveToVote" id="Hsb-pH-oMh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -112,7 +112,28 @@
                     <view key="view" contentMode="scaleToFill" id="mDV-WY-Xa8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKW-NA-q8X">
+                                <rect key="frame" x="218" y="215" width="165" height="30"/>
+                                <state key="normal" title="Make your decision now"/>
+                                <connections>
+                                    <action selector="makeDecisionButtonClicked:" destination="s6N-5U-fox" eventType="touchUpInside" id="nsH-CT-amT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your decision" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sf9-s1-7LN">
+                                <rect key="frame" x="249" y="330" width="103" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oKW-NA-q8X" firstAttribute="centerX" secondItem="mDV-WY-Xa8" secondAttribute="centerX" id="6Tj-Gm-QPM"/>
+                            <constraint firstItem="Sf9-s1-7LN" firstAttribute="top" secondItem="oKW-NA-q8X" secondAttribute="bottom" constant="85" id="Knc-AU-ST5"/>
+                            <constraint firstItem="oKW-NA-q8X" firstAttribute="centerX" secondItem="Sf9-s1-7LN" secondAttribute="centerX" id="buX-Up-93J"/>
+                            <constraint firstItem="oKW-NA-q8X" firstAttribute="top" secondItem="DVI-37-gyv" secondAttribute="bottom" constant="151" id="mMI-Fr-2au"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Vote" id="X0x-0O-ESs">
@@ -121,17 +142,25 @@
                                 <action selector="moveBack:" destination="s6N-5U-fox" id="l37-by-RMv"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nEN-dh-tkc"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nEN-dh-tkc">
+                            <connections>
+                                <segue destination="KCK-p5-bf4" kind="show" identifier="moveVoteAndCreate" id="qna-PB-gHK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="decisionLabel" destination="Sf9-s1-7LN" id="7Xb-CW-6D3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBq-Tp-Sml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1754" y="1052"/>
+            <point key="canvasLocation" x="245" y="1106"/>
         </scene>
         <!--Groups-->
         <scene sceneID="Yud-eS-VGr">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wd3-Ap-OFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="aKO-BC-w9U" customClass="SavedTableViewController" customModule="Test_projekt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="r8Z-C7-1T1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -139,7 +168,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupCell" id="OiK-rg-OQ9">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OiK-rg-OQ9" id="lrS-Xs-chh">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -161,14 +190,12 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="P08-uX-pMT">
                             <connections>
                                 <action selector="addGroupPressed:" destination="aKO-BC-w9U" id="GyV-la-OqG"/>
-                                <segue destination="KCK-p5-bf4" kind="show" id="tmj-3j-5aU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wd3-Ap-OFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="1052"/>
+            <point key="canvasLocation" x="1709" y="898"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UJt-wc-W3d">
@@ -282,43 +309,72 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xfY-lQ-TgH">
                                 <rect key="frame" x="204" y="219" width="193" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="193" id="08F-5z-bRC"/>
+                                    <constraint firstAttribute="width" constant="193" id="WTw-26-LLI"/>
+                                    <constraint firstAttribute="height" constant="30" id="Zy3-w8-Anf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNU-6L-v0d">
-                                <rect key="frame" x="204" y="190" width="99" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add thing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNU-6L-v0d">
+                                <rect key="frame" x="204" y="190" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdB-RL-5yQ">
-                                <rect key="frame" x="204" y="285" width="72" height="30"/>
-                                <state key="normal" title="Add group"/>
+                                <rect key="frame" x="204" y="257" width="67" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3iX-rn-2Q6"/>
+                                </constraints>
+                                <state key="normal" title="Add thing"/>
                                 <connections>
-                                    <action selector="addGroupWasTouched:" destination="KCK-p5-bf4" eventType="touchUpInside" id="ooc-bq-oF4"/>
+                                    <action selector="addThingsToList:" destination="KCK-p5-bf4" eventType="touchUpInside" id="WNz-jt-ank"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2l-uK-fXl">
+                                <rect key="frame" x="253" y="408" width="95" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="DtY-Eo-kas"/>
+                                </constraints>
+                                <state key="normal" title="Start voting"/>
+                                <connections>
+                                    <action selector="startVotingWasPressed:" destination="KCK-p5-bf4" eventType="touchUpInside" id="eB1-9X-Yey"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" layoutMarginsFollowReadableWidth="YES" text="Saved things" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndi-7m-sdN">
+                                <rect key="frame" x="250" y="333" width="100" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xfY-lQ-TgH" firstAttribute="centerX" secondItem="SOs-3T-J0U" secondAttribute="centerX" id="AJq-Q6-jrw"/>
-                            <constraint firstItem="AdB-RL-5yQ" firstAttribute="centerY" secondItem="SOs-3T-J0U" secondAttribute="centerY" id="AOt-K3-mr6"/>
-                            <constraint firstItem="AdB-RL-5yQ" firstAttribute="top" secondItem="xfY-lQ-TgH" secondAttribute="bottom" constant="36" id="Ti8-iq-yJd"/>
-                            <constraint firstItem="gNU-6L-v0d" firstAttribute="leading" secondItem="xfY-lQ-TgH" secondAttribute="leading" id="lcd-LT-Q0n"/>
-                            <constraint firstItem="xfY-lQ-TgH" firstAttribute="leading" secondItem="AdB-RL-5yQ" secondAttribute="leading" id="t6y-aG-gze"/>
-                            <constraint firstItem="xfY-lQ-TgH" firstAttribute="top" secondItem="gNU-6L-v0d" secondAttribute="bottom" constant="8" symbolic="YES" id="zOW-Ld-xAK"/>
+                            <constraint firstItem="gNU-6L-v0d" firstAttribute="leading" secondItem="xfY-lQ-TgH" secondAttribute="leading" id="3KH-5d-azF"/>
+                            <constraint firstItem="xfY-lQ-TgH" firstAttribute="leading" secondItem="AdB-RL-5yQ" secondAttribute="leading" id="DnD-fz-qjx"/>
+                            <constraint firstItem="ndi-7m-sdN" firstAttribute="top" secondItem="AdB-RL-5yQ" secondAttribute="bottom" constant="46" id="ERP-Bg-GdH"/>
+                            <constraint firstItem="AdB-RL-5yQ" firstAttribute="top" secondItem="xfY-lQ-TgH" secondAttribute="bottom" constant="8" symbolic="YES" id="KN7-dD-0YY"/>
+                            <constraint firstItem="U2l-uK-fXl" firstAttribute="top" secondItem="ndi-7m-sdN" secondAttribute="bottom" constant="54" id="WhS-W9-C4n"/>
+                            <constraint firstItem="xfY-lQ-TgH" firstAttribute="centerX" secondItem="ndi-7m-sdN" secondAttribute="centerX" id="ZzD-nC-tnV"/>
+                            <constraint firstItem="ndi-7m-sdN" firstAttribute="centerX" secondItem="U2l-uK-fXl" secondAttribute="centerX" id="mB8-PN-V0l"/>
+                            <constraint firstItem="xfY-lQ-TgH" firstAttribute="top" secondItem="gNU-6L-v0d" secondAttribute="bottom" constant="8" symbolic="YES" id="sjm-13-xA1"/>
+                            <constraint firstItem="JwF-Dz-kht" firstAttribute="top" secondItem="U2l-uK-fXl" secondAttribute="bottom" constant="105" id="ulf-yL-SEr"/>
+                            <constraint firstItem="gNU-6L-v0d" firstAttribute="top" secondItem="PsI-xo-ywX" secondAttribute="bottom" constant="126" id="x5o-wN-BCj"/>
+                            <constraint firstItem="xfY-lQ-TgH" firstAttribute="centerX" secondItem="SOs-3T-J0U" secondAttribute="centerX" id="y6d-UU-Ag9"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addGroupTextField" destination="xfY-lQ-TgH" id="IGw-jG-2sL"/>
-                        <segue destination="s6N-5U-fox" kind="show" id="wz4-kQ-R19"/>
+                        <outlet property="savedThingsLabel" destination="ndi-7m-sdN" id="Yku-Ra-yQy"/>
+                        <segue destination="s6N-5U-fox" kind="show" identifier="moveToVote" id="QCQ-pc-76M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WCW-pr-gpg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="1052"/>
+            <point key="canvasLocation" x="965" y="1106"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="QCQ-pc-76M"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,11 @@ import UIKit
 import Firebase
 
 class VoteViewController: UIViewController {
+    
+    let rootRef = FIRDatabase.database().reference()
 
+    @IBOutlet weak var decisionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,11 +26,37 @@ class VoteViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        decisionLabel.text = "Your decision is: ?"
+    }
+    
+    func fetchList() {
+        
+        rootRef.child("list").observeSingleEventOfType(.Value, withBlock: { snapshot in
+            //Checking if snapshot works
+            //print(snapshot.childrenCount)
+            
+            if let objects = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                //print(objects)
+                //print(objects.count)
+                //print(objects[1])
+                //self.decisionLabel.text = "\(objects[2])"
+                //print(objects.map { $0.value! })
+                
+                let number = UInt32(objects.count)
+                
+                let random = Int(arc4random_uniform(number))
+                
+                self.decisionLabel.text = "Your decision is: \(objects.map { $0.value! }[random])"
+                
+            }
+        })
+    }
+    
     
     @IBAction func moveBack(sender: AnyObject) {
         try! FIRAuth.auth()!.signOut()
-        print("fuck you")
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
     /*
@@ -39,4 +69,7 @@ class VoteViewController: UIViewController {
     }
     */
 
+    @IBAction func makeDecisionButtonClicked(sender: AnyObject) {
+        fetchList()
+    }
 }

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65795F0E1D86C64B00B94378 /* SavedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795F0D1D86C64B00B94378 /* SavedTableViewController.swift */; };
-		65795F141D86CB4700B94378 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795F131D86CB4700B94378 /* Group.swift */; };
 		65795F161D88004200B94378 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795F151D88004200B94378 /* AddGroupViewController.swift */; };
 		65A7E3BB1D75A0E3001A73C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A7E3BA1D75A0E3001A73C1 /* AppDelegate.swift */; };
 		65A7E3BD1D75A0E3001A73C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A7E3BC1D75A0E3001A73C1 /* ViewController.swift */; };
@@ -23,8 +21,6 @@
 
 /* Begin PBXFileReference section */
 		203B186592EF834B57B89901 /* Pods-Test projekt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test projekt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test projekt/Pods-Test projekt.release.xcconfig"; sourceTree = "<group>"; };
-		65795F0D1D86C64B00B94378 /* SavedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedTableViewController.swift; sourceTree = "<group>"; };
-		65795F131D86CB4700B94378 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		65795F151D88004200B94378 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		65A7E3B71D75A0E3001A73C1 /* Test projekt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test projekt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65A7E3BA1D75A0E3001A73C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +62,6 @@
 			children = (
 				65795F151D88004200B94378 /* AddGroupViewController.swift */,
 				65A7E3BC1D75A0E3001A73C1 /* ViewController.swift */,
-				65795F0D1D86C64B00B94378 /* SavedTableViewController.swift */,
 				65A7E3D01D7963DD001A73C1 /* RegisterViewController.swift */,
 				65A7E3D21D7EE325001A73C1 /* VoteViewController.swift */,
 			);
@@ -97,7 +92,6 @@
 			children = (
 				65795F111D86CB0500B94378 /* View */,
 				65A7E3BA1D75A0E3001A73C1 /* AppDelegate.swift */,
-				65795F131D86CB4700B94378 /* Group.swift */,
 				65795F121D86CB1D00B94378 /* Controller */,
 				65A7E3C11D75A0E3001A73C1 /* Assets.xcassets */,
 				65A7E3C61D75A0E3001A73C1 /* Info.plist */,
@@ -250,8 +244,6 @@
 				65795F161D88004200B94378 /* AddGroupViewController.swift in Sources */,
 				65A7E3D11D7963DD001A73C1 /* RegisterViewController.swift in Sources */,
 				65A7E3BD1D75A0E3001A73C1 /* ViewController.swift in Sources */,
-				65795F141D86CB4700B94378 /* Group.swift in Sources */,
-				65795F0E1D86C64B00B94378 /* SavedTableViewController.swift in Sources */,
 				65A7E3BB1D75A0E3001A73C1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
